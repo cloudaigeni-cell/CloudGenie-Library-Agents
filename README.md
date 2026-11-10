@@ -1,5 +1,20 @@
 # CloudGenie Library Agents
 
+## Real LLM Agents and MCP on Ubuntu
+
+The optional `agents` extra adds an OpenAI Agents SDK manager, independent year
+subagents, global duplicate/document/consolidation reviewers, and a real read-only
+MCP server. See [Anika deployment and learning guide](docs/ANIKA-DEPLOYMENT.md)
+and [agent architecture](docs/AGENT-ARCHITECTURE.md). Python 3.11+ is required for
+this extra. Model access and explicit data-disclosure consent are required for
+LLM review; `--probe` tests MCP without calling a model.
+
+The original PDF guide and diagrams describe the deterministic v1 engine below;
+the linked Markdown documents describe the new agent layer. No agent can delete
+files. This is a single-host deployment, not a distributed machine cluster.
+
+## Deterministic Scan Engine
+
 A Python coordinator and specialist workers for organizing a personal document and photo library. Run it on Windows, WSL Ubuntu, Linux, or a container with access to your exported files. The default scan is read-only and works without an LLM, MCP, Google credentials, or a paid API.
 
 The workers inventory each year, extract document content, compare duplicate evidence across all years, and assemble subject reading packs. Cleanup is a separate command sequence: review an exact-byte plan, quarantine approved copies, then optionally approve a separate permanent purge.
