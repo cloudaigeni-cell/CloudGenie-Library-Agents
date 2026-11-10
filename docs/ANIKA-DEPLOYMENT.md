@@ -21,7 +21,7 @@ skip cloning and venv creation on the already deployed host.
 cd /home/techforge
 git clone https://github.com/cloudaigeni-cell/CloudGenie-Library-Agents.git
 cd CloudGenie-Library-Agents
-git switch codex/mcp-anika
+git switch codex/cloudaigeni-mcp
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[analysis,agents]'
