@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloudgenie-library-agents"
+version = "1.0.0"
+description = "Local coordinator and specialist agents for a reviewable personal library audit"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+analysis = ["Pillow>=10", "ImageHash>=4.3", "pypdf>=5", "python-docx>=1.1", "python-pptx>=1", "openpyxl>=3.1", "scikit-learn>=1.5"]
+ocr = ["pytesseract>=0.3.13"]
+docs = ["reportlab>=4", "Pillow>=10", "pypdfium2>=4.30", "pypdf>=5"]
+
+[project.scripts]
+library-agents = "library_agents.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["library_agents*"]

@@ -1,0 +1,13 @@
+{
+  "sources": ["/mnt/d/GoogleExport/Takeout/Google Photos", "/mnt/d/GoogleExport/Takeout/Drive"],
+  "output": "/mnt/d/LibraryAudit/run-001",
+  "workers": 4,
+  "years": [],
+  "extensions": [],
+  "max_text_chars": 500000,
+  "max_similarity_items": 10000,
+  "photo_distance": 6,
+  "topics": 0,
+  "ocr": false,
+  "llm_model": null
+}

@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "id": "topic-001",
+      "keywords": [
+        "water plants",
+        "water",
+        "soil conditions",
+        "soil",
+        "conditions protect"
+      ],
+      "members": [
+        "1e97511a5145cb5a8a1a"
+      ],
+      "method": "TF-IDF and MiniBatchKMeans; topic suggestions require review"
+    },
+    {
+      "id": "topic-002",
+      "keywords": [
+        "recovery",
+        "original",
+        "backup",
+        "backup recovery",
+        "cleanup"
+      ],
+      "members": [
+        "ef42d39b881dd6988e5f",
+        "10c10e126527a6324fa1",
+        "949ad93f0e35c7412ac7",
+        "2026aba6678e0a6ac337",
+        "a860d7681c40cc58989e"
+      ],
+      "method": "TF-IDF and MiniBatchKMeans; topic suggestions require review"
+    }
+  ],
+  "limitations": [
+    "Topic grouping is statistical, not a factual equivalence or deletion decision; inspect every pack"
+  ]
+}

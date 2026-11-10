@@ -1,0 +1,8 @@
+.venv
+.build-deps
+.qa
+__pycache__
+demo-data
+runs
+docs
+tests

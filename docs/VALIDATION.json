@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-10",
+  "windows_tests_run": 25,
+  "windows_passed": 24,
+  "windows_failed": 0,
+  "windows_skipped": [
+    "Symlink fixture requires Windows privilege; the same path passed on WSL Ubuntu"
+  ],
+  "wsl_core_tests_passed": 4,
+  "guide_pages": 13,
+  "docker_runtime": "not tested; Docker is not installed on the development host",
+  "ocr_and_ollama": "optional integrations not exercised",
+  "cloud_operations": "not implemented",
+  "real_library_source_changes": 0,
+  "demo": {
+    "run_id": "b281c55112d94e84949fbf5a4ea03f06",
+    "created_utc": "2026-11-10T13:26:11.249628+00:00",
+    "files": 9,
+    "bytes": 34683,
+    "years": {
+      "2019": 2,
+      "2024": 7
+    },
+    "categories": {
+      "images": 3,
+      "text": 4,
+      "pdfs": 1,
+      "presentations": 1
+    },
+    "cached_files": 0,
+    "workers": 3,
+    "task_events": [
+      {
+        "agent": "year/2019/documents",
+        "year": "2019",
+        "specialist": "documents",
+        "files": 1,
+        "seconds": 0.016,
+        "finished_utc": "2026-11-10T13:26:08.339677+00:00"
+      },
+      {
+        "agent": "year/2019/photos",
+        "year": "2019",
+        "specialist": "photos",
+        "files": 1,
+        "seconds": 2.828,
+        "finished_utc": "2026-11-10T13:26:11.148456+00:00"
+      },
+      {
+        "agent": "year/2024/photos",
+        "year": "2024",
+        "specialist": "photos",
+        "files": 2,
+        "seconds": 2.812,
+        "finished_utc": "2026-11-10T13:26:11.159616+00:00"
+      },
+      {
+        "agent": "year/2024/documents",
+        "year": "2024",
+        "specialist": "documents",
+        "files": 5,
+        "seconds": 2.922,
+        "finished_utc": "2026-11-10T13:26:11.241631+00:00"
+      }
+    ],
+    "discovery_errors": 0,
+    "excluded": 0,
+    "read_errors": 0,
+    "exact_groups": 2,
+    "export_repeat_groups": 0,
+    "decoded_pixel_groups": 1,
+    "similar_photo_pairs": 2,
+    "same_text_groups": 1,
+    "topic_packs": 2,
+    "cloud_savings_bytes": null,
+    "limitations": [
+      "Cloud quota savings are unknown; local export bytes are not cloud quota bytes.",
+      "Only full byte identity is eligible for a cleanup plan. Pixels, text and perceptual matches require manual review.",
+      "Scanned PDFs need OCR outside this reader. Legacy .doc/.ppt/.xls and native cloud shortcut files are not text-extracted.",
+      "Video similarity is not implemented; full video byte hashes are compared.",
+      "Perceptual candidates use up to five nearest neighbors per image, not exhaustive pair enumeration; pHash does not reliably catch crops",
+      "Topic grouping is statistical, not a factual equivalence or deletion decision; inspect every pack"
+    ],
+    "source_changes": 0
+  }
+}

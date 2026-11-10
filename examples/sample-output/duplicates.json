@@ -1,0 +1,71 @@
+{
+  "exact": [
+    {
+      "id": "exact-5c7f95e94cd4401f",
+      "sha256": "5c7f95e94cd4401fb6aaaf1fa718fc79c25e058dfddcdb0426d0580c2555f7cc",
+      "size": 1147,
+      "members": [
+        "dca21d367a2f27e814fb",
+        "50c42860a67d94b7f08c"
+      ],
+      "kind": "exact_bytes",
+      "local_redundant_bytes_upper_bound": 1147,
+      "cloud_savings_bytes": null
+    },
+    {
+      "id": "exact-44adfe15a66d96a3",
+      "sha256": "44adfe15a66d96a334583c7cf97e323a2c6415545029d4e7d7676734bc2c3fb4",
+      "size": 191,
+      "members": [
+        "ef42d39b881dd6988e5f",
+        "2026aba6678e0a6ac337"
+      ],
+      "kind": "exact_bytes",
+      "local_redundant_bytes_upper_bound": 191,
+      "cloud_savings_bytes": null
+    }
+  ],
+  "export_repeats": [],
+  "decoded_pixels": [
+    {
+      "id": "pixels-f89f4046ea0e1cdc",
+      "members": [
+        "dca21d367a2f27e814fb",
+        "50c42860a67d94b7f08c",
+        "e25fdfc77651b65215e7"
+      ],
+      "decision": "REVIEW_METADATA_AND_ORIGINALS"
+    }
+  ],
+  "same_text": [
+    {
+      "id": "text-f681a99c9d3b8812",
+      "members": [
+        "ef42d39b881dd6988e5f",
+        "2026aba6678e0a6ac337"
+      ],
+      "decision": "REVIEW_FULL_DOCUMENT_CONTENT"
+    }
+  ],
+  "similar_photos": [
+    {
+      "left": "dca21d367a2f27e814fb",
+      "right": "e25fdfc77651b65215e7",
+      "phash_hamming_distance": 0,
+      "decision": "VISUAL_REVIEW_ONLY"
+    },
+    {
+      "left": "50c42860a67d94b7f08c",
+      "right": "e25fdfc77651b65215e7",
+      "phash_hamming_distance": 0,
+      "decision": "VISUAL_REVIEW_ONLY"
+    }
+  ],
+  "limitations": [
+    "Cloud quota savings are unknown; local export bytes are not cloud quota bytes.",
+    "Only full byte identity is eligible for a cleanup plan. Pixels, text and perceptual matches require manual review.",
+    "Scanned PDFs need OCR outside this reader. Legacy .doc/.ppt/.xls and native cloud shortcut files are not text-extracted.",
+    "Video similarity is not implemented; full video byte hashes are compared.",
+    "Perceptual candidates use up to five nearest neighbors per image, not exhaustive pair enumeration; pHash does not reliably catch crops"
+  ]
+}

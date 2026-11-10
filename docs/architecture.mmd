@@ -1,0 +1,21 @@
+flowchart TD
+    Inputs["Extracted Takeout and local folders"] --> Main["Coordinator and inventory"]
+    Main --> Y1["Year 2019 workers"]
+    Main --> Y2["Year 2024 workers"]
+    Main --> Y3["Every other selected year"]
+    Y1 --> Jobs["Year and format specialist jobs"]
+    Y2 --> Jobs
+    Y3 --> Jobs
+    Jobs --> Docs["Document reader"]
+    Jobs --> Pics["Photo reader"]
+    Jobs --> Hash["Full byte hashing"]
+    Docs --> Index["Global catalog and cache"]
+    Pics --> Index
+    Hash --> Index
+    Index --> Duplicates["Duplicate evidence across years"]
+    Index --> Topics["Topic grouping and reading packs"]
+    Duplicates --> Review["Human approval of exact-byte plan"]
+    Review --> Cleanup["Verify and quarantine"]
+    Cleanup --> Restore["Restore from verified backup"]
+    Cleanup --> Approval["Separate approval and typed confirmation"]
+    Approval --> Purge["Purge local quarantine copies"]
