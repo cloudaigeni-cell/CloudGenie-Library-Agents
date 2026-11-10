@@ -1,5 +1,11 @@
 # CloudGenie Library Agents
 
+![3D-style architecture: manager, year and specialist agents, local read-only MCP servers, frozen evidence and separate human-approved cleanup](docs/designs/agent-mcp-architecture-3d.png)
+
+Conceptual architecture, not a live-run status display. The illustrated years
+match the demo; real year agents are created from the audit catalog.
+See the [3D design gallery and tool-call walkthrough](docs/designs/README.md).
+
 ## Real LLM Agents and MCP on Ubuntu
 
 The optional `agents` extra adds an OpenAI Agents SDK manager, independent year

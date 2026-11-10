@@ -1,5 +1,12 @@
 # Agent Architecture: Anika Learning Deployment
 
+![3D architecture overview](designs/agent-mcp-architecture-3d.png)
+
+Illustrative single-host architecture. Connectors represent requests and returned
+evidence, not permission to write to the snapshot. All LLM agents use the hosted
+model API; MCP processes run locally on Anika. The existing Mermaid diagram below
+is the editable logical reference.
+
 This extends the v1 deterministic engine; it does not rename Python workers into
 LLM agents. The manager and each specialist are independent Agents SDK agent
 definitions, each with its own instructions and nested run context. The manager
@@ -46,6 +53,13 @@ flowchart TD
 | Human CLI cleanup | Separate review, quarantine, restore and purge | Existing hash validation and explicit approval plans |
 
 ## MCP contract
+
+![3D walkthrough of a year-scoped MCP inventory request](designs/mcp-tool-call-3d.png)
+
+Read the tool-call illustration as: manager delegates, specialist requests a tool,
+MCP enforces scope, evidence returns, specialist produces findings, manager combines
+them, and the human reviews. The bottom findings document represents the specialist's
+output. This is a conceptual sequence, not proof that live inference succeeded.
 
 `audit_overview()` returns year scope, file count and limitations.
 `list_inventory(offset, limit)` returns bounded metadata with extraction status.
