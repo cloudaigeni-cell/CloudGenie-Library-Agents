@@ -10,12 +10,15 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.optional-dependencies]
+agents = ["openai-agents==0.24.0", "mcp==2.3.0"]
 analysis = ["Pillow>=10", "ImageHash>=4.3", "pypdf>=5", "python-docx>=1.1", "python-pptx>=1", "openpyxl>=3.1", "scikit-learn>=1.5"]
 ocr = ["pytesseract>=0.3.13"]
 docs = ["reportlab>=4", "Pillow>=10", "pypdfium2>=4.30", "pypdf>=5"]
 
 [project.scripts]
 library-agents = "library_agents.cli:main"
+library-agent-review = "library_agents.agent_review:main"
+library-mcp = "library_agents.mcp_server:main"
 
 [tool.setuptools.packages.find]
 include = ["library_agents*"]
