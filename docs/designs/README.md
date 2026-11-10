@@ -13,7 +13,7 @@ agent architecture guide.
 1. Python inventories selected exports and computes evidence before LLM review.
 2. The manager delegates to year agents and global specialist agents.
 3. Each specialist uses a local stdio MCP connection to a read-only snapshot.
-4. Hosted model requests leave Anika; MCP itself is not an LLM.
+4. Hosted model requests leave the cloudaigeni host; MCP itself is not an LLM.
 5. The manager produces a review report. Cleanup is a separate human-approved CLI
    workflow, never an available agent tool.
 
@@ -42,7 +42,7 @@ live LLM run has succeeded.
 Create a polished 3D isometric educational architecture infographic, landscape,
 readable large labels, white background, teal/blue/coral accents, physically
 rendered miniature computing modules, no robots. Title: 'CloudGenie Library
-Agents'. Subtitle: 'Anika | Single-host agent + MCP architecture'. Clear
+Agents'. Subtitle: 'cloudaigeni | Single-host agent + MCP architecture'. Clear
 top-to-bottom hierarchy with separate, spacious bands and directional arrows.
 Top module 'LLM Manager'. Second band SIX separate modules labeled 'Year 2019',
 'Year 2024', 'Duplicates', 'Photos', 'Documents', 'Consolidation'. Manager delegates
@@ -68,7 +68,7 @@ Create a high quality 3D isometric educational infographic for CloudGenie Librar
 Agents. Landscape white background, raised physical computing modules and readable
 dark typography, teal blue coral accent palette matching a polished enterprise
 architecture presentation. Title 'Inside an MCP Tool Call'. Subtitle 'Example: a
-year-scoped inventory review on Anika'. Five numbered stations with clearly routed
+year-scoped inventory review on cloudaigeni'. Five numbered stations with clearly routed
 arrows in a spacious left-to-right sequence across the center: '1. Manager
 delegates', '2. Year agent reasons', '3. MCP tool request', '4. Server checks scope',
 '5. Evidence returns'. Station 1 command console with delegation card 'Review
@@ -85,3 +85,13 @@ tool.' Tiny footer 'Illustrative workflow, not a successful live-run trace.' Do
 not suggest tool server calls the LLM or has intelligence of its own. No secrets,
 API keys, original photo content or fake metrics. All wording clean and legible
 with generous whitespace, no overlapping arrows or words.
+
+## Naming and Agent Label Revision
+
+Both PNGs were edited with built-in image generation, preserving the original
+layout and read-only boundaries. Edit prompts: replace the deployment name with
+lowercase `cloudaigeni` in both subtitles; in the overview explicitly label the
+manager `LLM Manager Agent` and the six specialists `Year Agent 2019`,
+`Year Agent 2024`, `Duplicate Review Agent`, `Photo Review Agent`,
+`Document Review Agent`, and `Consolidation Agent`. Keep labels legible within
+each module. Preserve all remaining content.

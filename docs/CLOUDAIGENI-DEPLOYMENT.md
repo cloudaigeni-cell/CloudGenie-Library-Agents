@@ -1,8 +1,9 @@
-# Anika: Ubuntu Deployment and Learning Guide
+# cloudaigeni: Ubuntu Deployment and Learning Guide
 
 ## Deployment layout
 
-- Host: Anika, local WSL2 Ubuntu; user: techforge.
+- Deployment name: cloudaigeni, local WSL2 Ubuntu; user: techforge.
+- This is a deployment label; the operating-system hostname is unchanged.
 - Application: `/home/techforge/CloudGenie-Library-Agents`.
 - Python environment: `.venv` inside the application directory.
 - Generated data: `demo-data/` and `runs/`, excluded from Git.
@@ -14,7 +15,7 @@
 
 ## Install or reproduce
 
-Use Python 3.11+ (Anika has Python 3.12). These commands create a fresh checkout;
+Use Python 3.11+ (the deployed environment has Python 3.12). These commands create a fresh checkout;
 skip cloning and venv creation on the already deployed host.
 
 ```bash

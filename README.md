@@ -10,7 +10,7 @@ See the [3D design gallery and tool-call walkthrough](docs/designs/README.md).
 
 The optional `agents` extra adds an OpenAI Agents SDK manager, independent year
 subagents, global duplicate/document/consolidation reviewers, and a real read-only
-MCP server. See [Anika deployment and learning guide](docs/ANIKA-DEPLOYMENT.md)
+MCP server. See [cloudaigeni deployment and learning guide](docs/CLOUDAIGENI-DEPLOYMENT.md)
 and [agent architecture](docs/AGENT-ARCHITECTURE.md). Python 3.11+ is required for
 this extra. Model access and explicit data-disclosure consent are required for
 LLM review; `--probe` tests MCP without calling a model.
