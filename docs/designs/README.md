@@ -6,6 +6,20 @@ personal library files, or private source material was included in the prompts.
 The original v1 PDF has not been rebuilt; these images supplement the Markdown
 agent architecture guide.
 
+## How to Read the Labels
+
+**Main Agent** means the team leader; **Sub-agent** means a specialist with an
+assigned task. **MCP Client** means the software component that sends tool
+requests and receives results. **MCP Server** means the process that provides
+tools and checks access. The client is not another agent, and the server does
+not reason or make model decisions.
+
+The complete path is **Main Agent -> Sub-agent -> MCP Client -> MCP Server ->
+Data Store**. Evidence returns up the same path. In the 3D images, the client is
+simplified into the local stdio connection, not drawn as a separate labeled box.
+See the [beginner's guide and explicit client/server diagram](../AGENT-ARCHITECTURE.md#beginners-guide-who-does-what)
+for the terminology table, examples and code mapping.
+
 ## System Overview
 
 ![CloudGenie agent and MCP architecture](agent-mcp-architecture-3d.png)

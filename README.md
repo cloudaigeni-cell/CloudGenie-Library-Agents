@@ -15,6 +15,10 @@ and [agent architecture](docs/AGENT-ARCHITECTURE.md). Python 3.11+ is required f
 this extra. Model access and explicit data-disclosure consent are required for
 LLM review; `--probe` tests MCP without calling a model.
 
+New to agents? Start with [Who Does What?](docs/AGENT-ARCHITECTURE.md#beginners-guide-who-does-what)
+for plain-language labels and the difference between an Agent, Sub-agent,
+MCP Client and MCP Server.
+
 The original PDF guide and diagrams describe the deterministic v1 engine below;
 the linked Markdown documents describe the new agent layer. No agent can delete
 files. This is a single-host deployment, not a distributed machine cluster.

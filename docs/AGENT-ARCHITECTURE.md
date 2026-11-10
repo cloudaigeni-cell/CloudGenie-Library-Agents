@@ -14,23 +14,89 @@ decides tool calls using the configured model. Agents-as-tools keep ownership of
 the final response with the manager. Work is divided by duty on one Ubuntu host,
 not distributed across machines. Concurrency is decided by the SDK/model.
 
+## Beginner's Guide: Who Does What?
+
+MCP means Model Context Protocol. Keep the technical names visible so you can
+connect these diagrams to the code; the plain-language descriptions explain them.
+
+| Label | Simple meaning |
+| --- | --- |
+| Main Agent - Team Leader | Assigns work and combines the results |
+| Sub-agent - Year Organizer | Reviews files from one assigned year |
+| Sub-agent - Duplicate Finder | Checks evidence of matching files across years |
+| Sub-agent - Photo Reviewer | Reviews photo-match evidence, not original images through vision |
+| Sub-agent - Document Reviewer | Reviews extraction coverage for PDFs, slides and text |
+| Sub-agent - Content Organizer | Suggests grouping related content; does not replace originals |
+| MCP Client | Sends tool requests and receives tool results |
+| MCP Server | Provides tools and checks access permissions |
+| Data Store - Audit Records | Holds inventory and comparison evidence |
+| Human Reviewer - You | Reviews findings and approves any separate cleanup actions |
+
+### Important Clarifications
+
+- An Agent uses a model to choose actions and interpret results. A Sub-agent is
+  another agent with a narrower assignment, not merely a tool or server.
+- The MCP Client is a software component used by the agent runtime, not another
+  agent. It carries requests and results; it does not reason about your files.
+- The MCP Server provides tools and enforces their access rules. It does not
+  think, assign work, or make LLM decisions. In this project it serves read-only
+  evidence and has no deletion or shell tool.
+- The hosted model API supplies model inference. It is not the local MCP Server.
+- The Python scanner calculates hashes and extracts content. Those deterministic
+  workers are not the LLM Sub-agents shown in the agent layer.
+- Human review is separate from model recommendations. An agent cannot approve
+  its own deletion request; this deployment does not expose cleanup through MCP.
+
+### Follow One Request
+
+```text
+Main Agent
+    | assigns work
+    v
+Sub-agent
+    | uses
+    v
+MCP Client
+    | sends a tool request over local stdio
+    v
+MCP Server
+    | reads approved evidence
+    v
+Data Store
+```
+
+Results travel back up the same path: the server returns evidence through the
+client; the Sub-agent interprets it; the Main Agent combines the findings. You
+then review the report. For example, the Year Organizer requests `list_inventory`;
+the server returns only records within its configured year scope.
+
+In the code, `Agent` defines the Main Agent and Sub-agents. The SDK's
+`MCPServerStdio` object manages the **client-side connection**, despite having
+"Server" in its class name. The separate process in `mcp_server.py` is the actual
+MCP Server. The 3D images simplify the client connection into the local stdio
+link; it is not a second intelligent agent hidden in the server boxes.
+
+## System Diagram
+
 ```mermaid
 flowchart TD
     U[Human operator in cloudaigeni] --> S[Deterministic scan: explicitly selected exports]
     S --> E[Catalog, hashes, extracted text, duplicate and topic evidence]
     E --> F[Private frozen review snapshot]
     U --> C[Explicit model disclosure consent]
-    C --> M[LLM manager: OpenAI Agents SDK]
-    M --> Y[One real LLM subagent per year]
-    M --> D[Global duplicate reviewer]
-    M --> P[Global photo evidence reviewer]
-    M --> T[Global document reviewer]
-    M --> B[Global consolidation reviewer]
-    Y --> MY[Year-scoped MCP subprocesses]
-    D --> MG[Global read-only MCP subprocesses]
-    P --> MG
-    T --> MG
-    B --> MG
+    C --> M[Main Agent: Team Leader]
+    M --> Y[Sub-agent: Year Organizer - one per year]
+    M --> D[Sub-agent: Duplicate Finder]
+    M --> P[Sub-agent: Photo Reviewer]
+    M --> T[Sub-agent: Document Reviewer]
+    M --> B[Sub-agent: Content Organizer]
+    Y <--> YC[MCP Client - per year Sub-agent]
+    D <--> GC[MCP Client - per global Sub-agent]
+    P <--> GC
+    T <--> GC
+    B <--> GC
+    YC <-->|local stdio| MY[MCP Server - year-scoped, read-only]
+    GC <-->|local stdio| MG[MCP Server - global, read-only]
     MY --> F
     MG --> F
     M --> R[Review report and local lifecycle events]
@@ -49,6 +115,7 @@ flowchart TD
 | Document reviewer | Check supported formats and extraction status | Extracted text only after operator opt-in |
 | Consolidation reviewer | Propose reading packs and identify unresolved evidence | No document editing or replacement authority |
 | Manager | Delegate and assemble final report | Only specialist tools, no shell/filesystem/cleanup tools |
+| MCP Client | Carry tool requests and results between agent runtime and server | Not an LLM agent; server enforces data access |
 | MCP server | Serve bounded pages and enforce scope/disclosure | Fixed in-memory snapshot; no arbitrary path argument |
 | Human CLI cleanup | Separate review, quarantine, restore and purge | Existing hash validation and explicit approval plans |
 
