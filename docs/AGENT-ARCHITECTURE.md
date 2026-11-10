@@ -1,4 +1,11 @@
-# Agent Architecture: Anika Learning Deployment
+# Agent Architecture: cloudaigeni Learning Deployment
+
+![3D architecture overview](designs/agent-mcp-architecture-3d.png)
+
+Illustrative single-host architecture. Connectors represent requests and returned
+evidence, not permission to write to the snapshot. All LLM agents use the hosted
+model API; MCP processes run locally in cloudaigeni. The existing Mermaid diagram below
+is the editable logical reference.
 
 This extends the v1 deterministic engine; it does not rename Python workers into
 LLM agents. The manager and each specialist are independent Agents SDK agent
@@ -9,7 +16,7 @@ not distributed across machines. Concurrency is decided by the SDK/model.
 
 ```mermaid
 flowchart TD
-    U[Human operator on Anika] --> S[Deterministic scan: explicitly selected exports]
+    U[Human operator in cloudaigeni] --> S[Deterministic scan: explicitly selected exports]
     S --> E[Catalog, hashes, extracted text, duplicate and topic evidence]
     E --> F[Private frozen review snapshot]
     U --> C[Explicit model disclosure consent]
@@ -46,6 +53,13 @@ flowchart TD
 | Human CLI cleanup | Separate review, quarantine, restore and purge | Existing hash validation and explicit approval plans |
 
 ## MCP contract
+
+![3D walkthrough of a year-scoped MCP inventory request](designs/mcp-tool-call-3d.png)
+
+Read the tool-call illustration as: manager delegates, specialist requests a tool,
+MCP enforces scope, evidence returns, specialist produces findings, manager combines
+them, and the human reviews. The bottom findings document represents the specialist's
+output. This is a conceptual sequence, not proof that live inference succeeded.
 
 `audit_overview()` returns year scope, file count and limitations.
 `list_inventory(offset, limit)` returns bounded metadata with extraction status.

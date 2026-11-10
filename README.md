@@ -1,10 +1,16 @@
 # CloudGenie Library Agents
 
+![3D-style architecture: manager, year and specialist agents, local read-only MCP servers, frozen evidence and separate human-approved cleanup](docs/designs/agent-mcp-architecture-3d.png)
+
+Conceptual architecture, not a live-run status display. The illustrated years
+match the demo; real year agents are created from the audit catalog.
+See the [3D design gallery and tool-call walkthrough](docs/designs/README.md).
+
 ## Real LLM Agents and MCP on Ubuntu
 
 The optional `agents` extra adds an OpenAI Agents SDK manager, independent year
 subagents, global duplicate/document/consolidation reviewers, and a real read-only
-MCP server. See [Anika deployment and learning guide](docs/ANIKA-DEPLOYMENT.md)
+MCP server. See [cloudaigeni deployment and learning guide](docs/CLOUDAIGENI-DEPLOYMENT.md)
 and [agent architecture](docs/AGENT-ARCHITECTURE.md). Python 3.11+ is required for
 this extra. Model access and explicit data-disclosure consent are required for
 LLM review; `--probe` tests MCP without calling a model.
